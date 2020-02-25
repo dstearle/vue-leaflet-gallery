@@ -1,29 +1,12 @@
 # vue-leaflet-gallery
 
-## Project setup
-```
-npm install
-```
+<strong>What is this project? :</strong>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- The vue-leaflet-gallery project is a collection of maps from leaflet API that can be used in vue projects.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<br>
 
-### Run your tests
-```
-npm run test
-```
+<strong>Source :</strong>
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- leafletjs: https://leafletjs.com/index.html
+- vue2-leaflet: https://vue2-leaflet.netlify.com/examples/simple.html
