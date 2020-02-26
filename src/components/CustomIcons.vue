@@ -80,7 +80,6 @@
         LMap,
         LTileLayer,
         LMarker,
-        // LIcon
 
     },
 
