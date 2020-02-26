@@ -11,6 +11,10 @@
         <hr>
 
         <app-basic-map-one></app-basic-map-one>
+
+        <br>
+
+        <app-custom-icons></app-custom-icons>
                   
       </div>
         
@@ -23,11 +27,15 @@
 <script>
     
   import BasicMapOne from "./components/BasicMapOne.vue";
+  import CustomIcons from "./components/CustomIcons.vue";
+
   export default {
       
     components: {
         
-      appBasicMapOne: BasicMapOne
+      appBasicMapOne: BasicMapOne,
+
+      appCustomIcons: CustomIcons
         
     },
 
