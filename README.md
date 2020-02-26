@@ -6,6 +6,12 @@
 
 <br>
 
+<strong>Solved Issues & Bugs :</strong>
+
+- Icons not showing: https://github.com/vue-leaflet/Vue2Leaflet/issues/96
+
+<br>
+
 <strong>Source :</strong>
 
 - leafletjs: https://leafletjs.com/index.html
