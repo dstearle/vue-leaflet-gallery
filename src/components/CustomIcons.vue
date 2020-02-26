@@ -8,20 +8,53 @@
 
       <div style="height: 500px; width: 100%">
 
+        <!-- Icon Controls -->
+        <div style="height: 20%; overflow: auto;">
+
+            <h3>Custom Marker Icons</h3>
+
+            <label for="iconSize">Icon size:</label>
+
+            <input
+                id="iconSize"
+                v-model="iconSize"
+                type="range"
+                min="1"
+                max="200"
+                value="64"
+            >
+
+            <label for="customTextInput">Custom text: </label>
+
+            <input
+                id="customTextInput"
+                v-model="customText"
+                type="text"
+            >
+
+        </div>
+
         <!-- Leaflet Map -->
         <l-map
-          v-if="showMap"
           :zoom="zoom"
           :center="center"
-          :options="mapOptions"
           style="height: 80%"
-          @update:center="centerUpdate"
-          @update:zoom="zoomUpdate"
         >
-          <l-tile-layer
-            :url="url"
-            :attribution="attribution"
-          />
+
+            <!-- Tile Layer -->
+            <l-tile-layer
+                :url="url"
+                :attribution="attribution"
+            />
+
+            <!-- Default Icon -->
+            <l-marker :lat-lng="[37.52732, -119.278882]" />
+
+            <!-- Use icon given in icon property -->
+            <l-marker
+                :lat-lng="[47.41322, -1.209482]"
+                :icon="icon"
+            />
 
         </l-map>
 
@@ -35,16 +68,20 @@
 
 <script>
 
-  import { latLng } from "leaflet";
-  import { LMap, LTileLayer, } from "vue2-leaflet";
+  import { LMap, LTileLayer, LMarker, } from "vue2-leaflet";
+  import { latLng, icon } from "leaflet";
 
   export default {
 
-    name: "Example",
+    name: "Icon",
 
     components: {
-      LMap,
-      LTileLayer,
+
+        LMap,
+        LTileLayer,
+        LMarker,
+        // LIcon
+
     },
 
     data() {
@@ -58,19 +95,33 @@
         url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         attribution:
           '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        // Popup location
-        withPopup: latLng(37.52732, -119.278882),
-        // Tooltip location
-        withTooltip: latLng(32.68338, -117.184274),
-        currentZoom: 11.5,
-        currentCenter: latLng(37.52732, -119.278882),
-        showParagraph: false,
-        mapOptions: {
-          zoomSnap: 0.5
-        },
-        showMap: true
+        // Icon Properties
+        icon: icon({
+            iconUrl: "static/images/baseball-marker.png",
+            iconSize: [32, 37],
+            iconAnchor: [16, 37]
+        }),
+        staticAnchor: [16, 37],
+        customText: "Foobar",
+        iconSize: 64
 
       };
+
+    },
+
+    computed: {
+
+        dynamicSize() {
+
+        return [this.iconSize, this.iconSize * 1.15];
+
+        },
+
+        dynamicAnchor() {
+
+        return [this.iconSize / 2, this.iconSize * 1.15];
+
+        }
 
     },
 
@@ -79,18 +130,31 @@
       zoomUpdate(zoom) {
         this.currentZoom = zoom;
       },
+
       centerUpdate(center) {
         this.currentCenter = center;
       },
-      showLongText() {
-        this.showParagraph = !this.showParagraph;
-      },
-      innerClick() {
-        alert("Click!");
-      }
 
     }
 
   };
 
 </script>
+
+<style>
+
+    .someExtraClass {
+
+        background-color: aqua;
+        padding: 10px;
+        border: 1px solid #333;
+        border-radius: 0 20px 20px 20px;
+        box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+
+    }
+
+</style>
