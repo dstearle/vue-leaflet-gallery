@@ -11,26 +11,26 @@
         <!-- Icon Controls -->
         <div style="height: 20%; overflow: auto;">
 
-            <h6>Icon Settings</h6>
+          <h6>Icon Settings</h6>
 
-            <label for="iconSize">Icon size:</label>
+          <label for="iconSize">Icon size:</label>
 
-            <input
-                id="iconSize"
-                v-model="iconSize"
-                type="range"
-                min="1"
-                max="200"
-                value="64"
-            >
+          <input
+            id="iconSize"
+            v-model="iconSize"
+            type="range"
+            min="1"
+            max="200"
+            value="64"
+          >
 
-            <label for="customTextInput">Custom text: </label>
+          <label for="customTextInput">Custom text: </label>
 
-            <input
-                id="customTextInput"
-                v-model="customText"
-                type="text"
-            >
+          <input
+            id="customTextInput"
+            v-model="customText"
+            type="text"
+          >
 
         </div>
 
@@ -41,29 +41,47 @@
           style="height: 80%"
         >
 
-            <!-- Tile Layer -->
-            <l-tile-layer
-                :url="url"
-                :attribution="attribution"
+          <!-- Tile Layer -->
+          <l-tile-layer
+            :url="url"
+            :attribution="attribution"
+          />
+
+          <!-- Default Icon -->
+          <l-marker :lat-lng="[37.52732, -119.278882]" />
+
+          <!-- Create image icon (icon) from l-icon tag -->
+          <l-marker :lat-lng="[32.924717, -118.491696]">
+
+            <l-icon
+              :icon-size="dynamicSize"
+              :icon-anchor="dynamicAnchor"
+              :icon-url= myIcon
             />
+            
+          </l-marker>
 
-            <!-- Default Icon -->
-            <l-marker :lat-lng="[37.52732, -119.278882]" />
+          <!-- Use icon given in icon property -->
+          <l-marker
+            :lat-lng="[32.680863, -117.185148]"
+            :icon="icon"
+          />
 
-            <!-- Create image icon (icon) from l-icon tag -->
-            <l-marker :lat-lng="[32.924717, -118.491696]">
-                <l-icon
-                    :icon-size="dynamicSize"
-                    :icon-anchor="dynamicAnchor"
-                    :icon-url= myIcon
-                />
-            </l-marker>
+          <!-- Create HTML icon (divIcon) by providing content inside the l-icon tag -->
+          <l-marker :lat-lng="[33.098172, -116.993914]">
 
-            <!-- Use icon given in icon property -->
-            <l-marker
-                :lat-lng="[32.680863, -117.185148]"
-                :icon="icon"
-            />
+            <l-icon
+              :icon-anchor="staticAnchor"
+              class-name="someExtraClass"
+            >
+
+              <div class="headline">{{ customText }}</div>
+
+              <img :src= myIcon style="width: 5rem; height: 5rem">
+
+            </l-icon>
+
+          </l-marker>
 
         </l-map>
 
@@ -86,10 +104,10 @@
 
     components: {
 
-        LMap,
-        LTileLayer,
-        LMarker,
-        LIcon
+      LMap,
+      LTileLayer,
+      LMarker,
+      LIcon
 
     },
 
@@ -108,12 +126,12 @@
           '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         // Icon Properties
         icon: icon({
-            iconUrl: require("./../images/dinoIcon.png"),
-            iconSize: [40, 40],
-            iconAnchor: [16, 37]
+          iconUrl: require("./../images/dinoIcon.png"),
+          iconSize: [40, 40],
+          iconAnchor: [16, 37]
         }),
         staticAnchor: [16, 37],
-        customText: "Foobar",
+        customText: "Brachiosaurus",
         iconSize: 64
 
       };
@@ -144,18 +162,18 @@
 
 <style>
 
-    .someExtraClass {
+  .someExtraClass {
 
-        background-color: aqua;
-        padding: 10px;
-        border: 1px solid #333;
-        border-radius: 0 20px 20px 20px;
-        box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        width: auto !important;
-        height: auto !important;
-        margin: 0 !important;
+    background-color: lightgreen;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 0 20px 20px 20px;
+    box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
 
-    }
+  }
 
 </style>
