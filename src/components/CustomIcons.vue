@@ -51,13 +51,13 @@
             <l-marker :lat-lng="[37.52732, -119.278882]" />
 
             <!-- Create image icon (icon) from l-icon tag -->
-            <!-- <l-marker :lat-lng="[37.52732, -119.278882]">
+            <l-marker :lat-lng="[32.924717, -118.491696]">
                 <l-icon
                     :icon-size="dynamicSize"
                     :icon-anchor="dynamicAnchor"
-                    icon-url="./../images/dinoIcon.png"
+                    :icon-url= myIcon
                 />
-            </l-marker> -->
+            </l-marker>
 
             <!-- Use icon given in icon property -->
             <l-marker
@@ -77,7 +77,7 @@
 
 <script>
 
-  import { LMap, LTileLayer, LMarker, } from "vue2-leaflet";
+  import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
   import { latLng, icon } from "leaflet";
 
   export default {
@@ -89,13 +89,15 @@
         LMap,
         LTileLayer,
         LMarker,
-        // LIcon
+        LIcon
 
     },
 
     data() {
 
       return {
+
+        myIcon: require("./../images/dinoIcon.png"),
 
         // Zoom out
         zoom: 5,
@@ -106,7 +108,7 @@
           '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         // Icon Properties
         icon: icon({
-            iconUrl:  require("./../images/dinoIcon.png"),
+            iconUrl: require("./../images/dinoIcon.png"),
             iconSize: [40, 40],
             iconAnchor: [16, 37]
         }),
@@ -120,31 +122,21 @@
 
     computed: {
 
-        dynamicSize() {
+      // For resizing icon dynamically
+      dynamicSize() {
 
-        return [this.iconSize, this.iconSize * 1.15];
+      return [this.iconSize, this.iconSize * 1.15];
 
-        },
+      },
 
-        dynamicAnchor() {
+      // Adjust anchor position when icon size changes
+      dynamicAnchor() {
 
-        return [this.iconSize / 2, this.iconSize * 1.15];
+      return [this.iconSize / 2, this.iconSize * 1.15];
 
-        }
+      }
 
     },
-
-    methods: {
-
-      zoomUpdate(zoom) {
-        this.currentZoom = zoom;
-      },
-
-      centerUpdate(center) {
-        this.currentCenter = center;
-      },
-
-    }
 
   };
 
