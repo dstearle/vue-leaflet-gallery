@@ -11,7 +11,7 @@
         <!-- Icon Controls -->
         <div style="height: 20%; overflow: auto;">
 
-            <h3>Custom Marker Icons</h3>
+            <h6>Icon Settings</h6>
 
             <label for="iconSize">Icon size:</label>
 
@@ -50,9 +50,18 @@
             <!-- Default Icon -->
             <l-marker :lat-lng="[37.52732, -119.278882]" />
 
+            <!-- Create image icon (icon) from l-icon tag -->
+            <!-- <l-marker :lat-lng="[37.52732, -119.278882]">
+                <l-icon
+                    :icon-size="dynamicSize"
+                    :icon-anchor="dynamicAnchor"
+                    icon-url="./../images/dinoIcon.png"
+                />
+            </l-marker> -->
+
             <!-- Use icon given in icon property -->
             <l-marker
-                :lat-lng="[47.41322, -1.209482]"
+                :lat-lng="[32.680863, -117.185148]"
                 :icon="icon"
             />
 
@@ -80,6 +89,7 @@
         LMap,
         LTileLayer,
         LMarker,
+        // LIcon
 
     },
 
@@ -96,8 +106,8 @@
           '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         // Icon Properties
         icon: icon({
-            iconUrl: "static/images/baseball-marker.png",
-            iconSize: [32, 37],
+            iconUrl:  require("./../images/dinoIcon.png"),
+            iconSize: [40, 40],
             iconAnchor: [16, 37]
         }),
         staticAnchor: [16, 37],
