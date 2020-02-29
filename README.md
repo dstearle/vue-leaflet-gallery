@@ -16,3 +16,4 @@
 
 - leafletjs: https://leafletjs.com/index.html
 - vue2-leaflet: https://vue2-leaflet.netlify.com/examples/simple.html
+- for making custom markers: https://www.geoapify.com/create-custom-map-marker-icon/
