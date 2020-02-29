@@ -83,6 +83,22 @@
 
           </l-marker>
 
+          <!-- Another custom HTML Icon -->
+          <l-marker :lat-lng="[33.143976, -117.336785]">
+
+            <l-icon
+              :icon-anchor="staticAnchor"
+              class-name="custom-div-icon"
+            >
+
+              <div style='background-color:#c30b82;' class='marker-pin'></div>
+              
+              <img :src= myIcon class="my-auto">
+
+            </l-icon>
+
+          </l-marker>
+
         </l-map>
 
       </div>
@@ -175,5 +191,43 @@
     margin: 0 !important;
 
   }
+
+  .marker-pin {
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    background: #c30b82;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -15px;
+
+  }
+
+.marker-pin::after {
+
+  content: '';
+  width: 34px;
+  height: 34px;
+  margin: 3px 0 0 3px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+
+ }
+
+.custom-div-icon img {
+
+  position: absolute;
+  width: 24px;
+  font-size: 22px;
+  left: 0;
+  right: 0;
+  margin: 10px auto;
+  text-align: center;
+
+}
 
 </style>
