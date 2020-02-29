@@ -84,8 +84,20 @@
           </l-marker>
 
           <!-- Another custom HTML Icon -->
-          <l-marker :lat-lng="[33.143976, -117.336785]">
+          <l-marker 
+            :lat-lng="[33.143976, -117.336785]" 
+            :draggable="true"
+            
+          >
 
+            <!-- Tooltip -->
+            <!-- <l-tooltip :options="{ direction: 'top',  permanent: 'true', }" >
+
+              <div>Drag Me!</div>
+
+            </l-tooltip> -->
+
+            <!-- Icon -->
             <l-icon
               :icon-anchor="staticAnchor"
               class-name="custom-div-icon"
@@ -111,7 +123,7 @@
 
 <script>
 
-  import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
+  import { LMap, LTileLayer, LMarker, LIcon, } from "vue2-leaflet";
   import { latLng, icon } from "leaflet";
 
   export default {
@@ -123,7 +135,8 @@
       LMap,
       LTileLayer,
       LMarker,
-      LIcon
+      LIcon,
+      // LTooltip
 
     },
 
@@ -143,8 +156,8 @@
         // Icon Properties
         icon: icon({
           iconUrl: require("./../images/dinoIcon.png"),
-          iconSize: [40, 40],
-          iconAnchor: [16, 37]
+          iconSize: [40, 56],
+          iconAnchor: [16, 37],
         }),
         staticAnchor: [16, 37],
         customText: "Brachiosaurus",
@@ -209,9 +222,9 @@
 .marker-pin::after {
 
   content: '';
-  width: 34px;
-  height: 34px;
-  margin: 3px 0 0 3px;
+  width: 30px;
+  height: 30px;
+  margin: 5px 0 0 5px;
   background: #fff;
   position: absolute;
   border-radius: 50%;
